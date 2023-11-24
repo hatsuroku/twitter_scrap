@@ -1,8 +1,9 @@
 from typing import Tuple
 
-import decoder
-from functional import pipe
-import cache_io
+from . import decoder
+from . import cache_io
+from .functional import pipe
+
 
 
 def is_entry_eq(a, b):

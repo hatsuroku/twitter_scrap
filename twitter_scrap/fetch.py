@@ -2,7 +2,8 @@ import random
 from typing import Optional
 import requests as req
 import os
-import file
+
+from . import file
 
 
 class Fetch:
@@ -11,7 +12,7 @@ class Fetch:
             self.headers = headers
         else:
             DEFAULT_HEADERS_PATH = os.path.join(os.getcwd(), 'headers.json')
-            self.update_headers_from_file(DEFAULT_HEADERS_PATH)
+            self.headers = file.read_json_from_file_without_exception(DEFAULT_HEADERS_PATH) or {}
     
     def update_headers_from_file(self, headers_path: str):
         try:

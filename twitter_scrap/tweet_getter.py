@@ -1,9 +1,10 @@
-from functional import pipe
-import decoder
-from decoder import name_id_map
-from fetch import fetch
-import cache_io
-from updater import Updater
+from . import cache_io
+from . import decoder
+
+from .decoder import name_id_map
+from .functional import pipe
+from .fetch import fetch
+from .updater import Updater
 
 
 class TweetGetter:

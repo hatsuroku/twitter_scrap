@@ -1,6 +1,6 @@
 import os
-import file
-from decoder import name_id_map
+from . import file
+from .decoder import name_id_map
 
 CACHE_DIR = "cache"
 CACHE_PATH = os.path.join(os.getcwd(), CACHE_DIR)

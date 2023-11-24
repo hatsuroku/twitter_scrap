@@ -1,9 +1,9 @@
-from tweet_getter import TweetGetter
-from fetch import fetch
+from twitter_scrap.tweet_getter import TweetGetter
+from twitter_scrap.fetch import fetch
 import json
 import os
 
-getter = TweetGetter("mollowmollow")
+getter = TweetGetter("yuka_n_RIOT")
 
 # 默认 headers json 的路径是 python 运行路径(os.getcwd())下的 headers.json
 # 如果需要自行指定 header json 路径，也可以用以下 api

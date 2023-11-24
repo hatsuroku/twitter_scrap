@@ -1,10 +1,11 @@
-import file
-from fetch import fetch
 import os
 from typing import Optional
 from datetime import datetime
-from functional import pipe
-from tweet import Tweet, Timeline, build_twitter_url
+
+from . import file
+from .fetch import fetch
+from .functional import pipe
+from .tweet import Tweet, Timeline, build_twitter_url
 
 """
 从 Twitter API 返回的数据中解析出 user_id
