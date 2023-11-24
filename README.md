@@ -8,25 +8,37 @@
 
 ## 使用方法
 
-首先修改 `header.json` 里的内容，其中空字段可以在随便访问一个推特用户的首页时用浏览器后台的 Network 功能，搜索 `UserTweet` 获得你自己的内容，并且填充进 `header.json` 中。
+工程自带一个请求头例子 `headers.json`，里面为空的内容需要自己填充。
+
+1. 随便访问一个推特用户的首页时用浏览器后台的 Network 功能，搜索 `UserTweet` ，通过这个请求获得你自己的请求头。
+
+2. 用自己的请求头填充 `headers.json` 中为空的字段。
+
+3. 把 `headers.json` 放到 python 的工作路径（也就是 `os.path.getcwd()` 会得到的路径）下，就可以使用该请求头进行请求了。
 
 ![](assets/2023-11-23-16-40-06-image.png)
 
-用法可以在 `demo.py` 中查看，主要使用 `TwiterGetter` 的两个方法：
+用法可以在 `demo.py` 中查看，获取新推特主要使用 `TwiterGetter` 的两个方法：
 
 ```python
 from tweet_getter import TweetGetter
+fom fetch import fetch
 import json
+import os
 
 getter = TweetGetter("yuka_n_RIOT")
+
+# 默认 headers 的路径是 python 运行路径下的 headers.json
+# 如果需要自行指定路径，也可以用以下 api
+# fetch.update_headers_from_file('./example/ie/example.json')
+
+### 根据自己想要的效果选其中一个 api 调用
+
 # 拉取新推特，但不更新本地
 res = getter.get()
 
 # 拉取新推特并且更新本地
 res = getter.get_and_update()
-
-with open("out.json", "w", encoding="utf-8") as f:
-    json.dump(res.to_json(), f, ensure_ascii=False, indent=4)
 ```
 
 ## 工程结构

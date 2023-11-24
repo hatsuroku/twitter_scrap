@@ -1,7 +1,7 @@
 from functional import pipe
 import decoder
 from decoder import name_id_map
-import fetch
+from fetch import fetch
 import cache_io
 from updater import Updater
 

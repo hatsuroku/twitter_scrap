@@ -23,7 +23,7 @@ def twitter_filename_from_user(user_screen_name: str):
 
 def read_local_instructions(user_screen_name: str):
     ensure_cache_exist()
-    return file.read_json_from_file(twitter_filename_from_user(user_screen_name))
+    return file.read_json_from_file_without_exception(twitter_filename_from_user(user_screen_name))
 
 
 def save_to_local_instructions(user_screen_name: str, instructions: dict):

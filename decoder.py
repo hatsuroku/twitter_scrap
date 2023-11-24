@@ -1,5 +1,5 @@
 import file
-import fetch
+from fetch import fetch
 import os
 from typing import Optional
 from datetime import datetime
@@ -233,7 +233,7 @@ class NameIDMap:
     def read_name_id_mapping(self):
         if not os.path.exists(self.NAME_ID_MAP_PATH):
             return {}
-        local = file.read_json_from_file(self.NAME_ID_MAP_PATH)
+        local = file.read_json_from_file_without_exception(self.NAME_ID_MAP_PATH)
         return local if local is not None else {}
 
     def save_name_id_mapping(self):
