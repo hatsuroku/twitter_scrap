@@ -44,19 +44,24 @@ res = getter.get_and_update()
 ## 工程结构
 
 ```bash
-│  cache_io.py            # 本地缓存的读写
-│  decoder.py             # 核心文件，用于从 twitter API 返回的 json 提取关键字段
-│  demo.py                # 使用范例
-│  fetch.py               # 网络请求相关
-│  file.py                # 文件底层操作
-│  functional.py          # 函数式编程辅助库
+│  .gitignore
+│  demo.py                 # 使用范例
+│  headers.json            # 请求头(headers) json 文件
 │  LICENSE
-│  name_to_id.json        # screen_name 到 user_id 的本地缓存，如不存在则会在初次使用时生成
-│  tweet.py               # 提取出的关键字段
-│  tweet_getter.py        # 对外暴露的 api
-│  updater.py             # 更新策略相关
+│  name_to_id.json         # screen_name 到 user_id 的本地缓存，如不存在则会在初次使用时生成
+│  README.md
 │
-├─cache                   # 用户推特缓存，如不存在则会在初次使用时生成
-│      user_name---1122334455667788.json
+├─cache                    # 用户推特缓存，如不存在则会在初次使用时生成
+│      yuka_n_RIOT---1303687630299643904.json
 │
+├─twitter_scrap
+│  │  cache_io.py          # 本地缓存的读写
+│  │  decoder.py           # 核心文件，用于从 twitter API 返回的 json 提取关键字段
+│  │  fetch.py             # 网络请求相关
+│  │  file.py              # 文件底层操作
+│  │  functional.py        # 函数式编程辅助库
+│  │  tweet.py             # 提取出的关键字段
+│  │  tweet_getter.py      # 对外暴露的主要 api
+│  │  updater.py           # 更新策略相关
+│  └─ __init__.py
 ```
