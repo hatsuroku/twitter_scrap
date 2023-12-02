@@ -32,7 +32,7 @@ def parse_UserTweet_decorator(parse_func):
         try:
             ret = parse_func(args[0])
         except KeyError as e:
-            raise KeyError("UserTweet 接口返回失败，输入的内容可能有误，或者 json 结构有更改").with_traceback(
+            raise KeyError(f"UserTweet 接口返回失败，输入的内容可能有误，或者 json 结构有更改，缺失 [{e.args}]").with_traceback(
                 e.__traceback__
             )
         return ret
@@ -112,7 +112,7 @@ def entries_from_instructions(instructions: list[dict]) -> list:
     return [
         entry
         for entry in entries
-        if entry_is_tweet(entry) or entry_is_conversation(entry)
+        if entry_is_not_ad(entry) and entry_is_tweet(entry) or entry_is_conversation(entry)
     ]
 
 
@@ -214,6 +214,10 @@ def id_of_entry(entry):
 
 def entry_is_tweet(entry: dict) -> bool:
     return "tweet" in entry["entryId"]
+
+
+def entry_is_not_ad(entry: dict) -> bool:
+    return "promoted" not in entry["entryId"]
 
 
 def entry_is_conversation(entry: dict) -> bool:
